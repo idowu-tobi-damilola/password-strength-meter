@@ -1,63 +1,50 @@
 var pw_field = document.getElementById("password_field");
-function switchOffAllCells() {
-  switchOffCell(0);
-  switchOffCell(1);
-  switchOffCell(2);
-  switchOffCell(3);
-  switchOffCell(4);
-}
-function indicateStrength(str) {
-  text = document.getElementById("strength-text");
-  text.innerHTML = str;
-}
-function decreaseStrengthMeter(score) {
-  console.log(score);
-  for(var i=0; i < score.length; i++) {
-        var cell = document.getElementById('c' + i);
-        cell.className = 'cell';
-    }
-}
-function increaseStrengthMeter(score) {
-  console.log(score);
-  for(var i=0; i < score.length; i++) {
-    var cell = document.getElementById('c' + i);
-    cell.className = 'cell on';
-  }
-}
-
-function adjustStrengthMeter() {
-
-}
-
-function getMeterPosition(score) {
-  var meterPosition = {
-    "0": function() {
-      increaseStrengthMeter([0]);
-      decreaseStrengthMeter([0,1,2,3,4]);
-    },
-    "1": function() {
-      increaseStrengthMeter([0,1]);
-      decreaseStrengthMeter([2,3,4]);
-    },
-    "2": function() {
-      increaseStrengthMeter([0,1,2]);
-      decreaseStrengthMeter([3,4]);
-    },
-    "3": function() {
-      increaseStrengthMeter([0,1,2,3]);
-      decreaseStrengthMeter([4]);
-    },
-    "4": function() {
-      increaseStrengthMeter([0,1,2,3,4]);
-    }
-  }
-  meterPosition[score]();
-}
 
 pw_field.onkeyup = function() {
+  // get the score from the zxcvbn library
   var result = zxcvbn(pw_field.value);
   var score = result.score;
   // Call to getMeterPosition function to advance progress bar
   var highlight = getMeterPosition(score);
+}
 
+/* Display password strength text */
+function indicateStrength(str) {
+  text = document.getElementById("strength-text");
+  text.innerHTML = str;
+}
+
+/* Update progressbar */
+function adjustStrengthMeter(percentage, color) {
+  document.getElementById('progressbar').style.visibility = "visible";
+  document.getElementById('progressbar').style.width = percentage + "%";
+  document.getElementById('progressbar').style.backgroundColor = color;
+}
+
+// none red yellow green
+function getMeterPosition(score) {
+  /* meter position object */
+  var meterPosition = {
+    "0": function() {
+      adjustStrengthMeter(20, "#d50014");
+      indicateStrength("");
+    },
+    "1": function() {
+      adjustStrengthMeter(40, "#d50014");
+      indicateStrength("Weak");
+    },
+    "2": function() {
+      adjustStrengthMeter(60, "#e8ba00");
+      indicateStrength("Moderate");
+    },
+    "3": function() {
+      adjustStrengthMeter(80, "#88af0e");
+      indicateStrength("Strong");
+    },
+    "4": function() {
+      adjustStrengthMeter(100, "#88af0e");
+      indicateStrength("Very Strong");
+    }
+  }
+  meterPosition[score]();
 }

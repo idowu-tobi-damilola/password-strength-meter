@@ -1,6 +1,6 @@
 <html>
 <head>
-  <title>Password meter test</title>
+  <title>Password Meter Example</title>
   <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 
@@ -9,18 +9,16 @@
     <label>
       Password <br />
       <input name="password"
-             type="text"
-             id="password_field"
-             onkeyup="" />
+             type="password"
+             id="password_field" />
     </label>
-    <div id="bar">
-      <span id="c0" class="cell"></span>
-      <span id="c1" class="cell"></span>
-      <span id="c2" class="cell"></span>
-      <span id="c3" class="cell"></span>
-      <span id="c4" class="cell"></span>
+
+    <div id="progresscontainer">
+      <div id="progressbar">
+        <div></div>
+      </div>
     </div>
-    <span id="strength-text"></span>
+    <div id="strength-text"></div>
   </div>
 
   <script language="javascript" type="text/javascript" src="js/zxcvbn.js"></script>

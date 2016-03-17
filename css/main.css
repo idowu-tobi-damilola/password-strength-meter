@@ -1,33 +1,27 @@
 body {
   background-color:white;
 }
-#bar {
-  width: 270px;
-  min-height: 20px;
+
+#password_field {
+  width: 200px;
 }
-.cell {
-  width: 9%;
-  border: solid #fff 1px;
-  display: block;
-  float: left;
-  min-height: 10px;
-  background-color: #ccc;
+#progresscontainer {
+  visibility: hidden;
+  margin-top: 5px;
+  width: 200px;
+  border: 1px solid gray;
 }
-#c0.on {
-  background-color: red;
+#progressbar {
+      background-color: white;
+      width: 200px;
+    }
+#progressbar > div {
+   background-color: white; /* Adjust with JavaScript */
+   width: 0%; /* Adjust with JavaScript */
+   height: 5px;
+   border-radius: 10px;
 }
-#c1.on {
-  background-color: #EE8262;
-}
-#c2.on {
-  background-color: orange;
-}
-#c3.on {
-  background-color: #C8F526;
-}
-#c4.on {
-  background-color: green;
-}
-span#strength-text {
-  float:left;
+#strength-text {
+  width: 200px;
+  text-align:center;
 }
