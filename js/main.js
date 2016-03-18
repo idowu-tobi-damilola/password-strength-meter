@@ -15,10 +15,29 @@ function indicateStrength(str) {
 }
 
 /* Update progressbar */
-function adjustStrengthMeter(percentage, color) {
+function adjustStrengthMeter(score) {
+  var color = {
+    "0": "#d50014",
+    "1": "#d50014",
+    "2": "#e8ba00",
+    "3": "#88af0e",
+    "4": "#88af0e"
+  }
+
+  var strengthText = {
+    "0": "",
+    "1": "Weak",
+    "2": "Moderate",
+    "3": "Strong",
+    "4": "Very Strong"
+  }
+
+  var percentage = (score * 20) + 20;
+
+  indicateStrength(strengthText[score]);
   document.getElementById('progressbar').style.visibility = "visible";
   document.getElementById('progressbar').style.width = percentage + "%";
-  document.getElementById('progressbar').style.backgroundColor = color;
+  document.getElementById('progressbar').style.backgroundColor = color[score];
 }
 
 // none red yellow green
@@ -26,24 +45,19 @@ function getMeterPosition(score) {
   /* meter position object */
   var meterPosition = {
     "0": function() {
-      adjustStrengthMeter(20, "#d50014");
-      indicateStrength("");
+      adjustStrengthMeter(0);
     },
     "1": function() {
-      adjustStrengthMeter(40, "#d50014");
-      indicateStrength("Weak");
+      adjustStrengthMeter(1);
     },
     "2": function() {
-      adjustStrengthMeter(60, "#e8ba00");
-      indicateStrength("Moderate");
+      adjustStrengthMeter(2);
     },
     "3": function() {
-      adjustStrengthMeter(80, "#88af0e");
-      indicateStrength("Strong");
+      adjustStrengthMeter(3);
     },
     "4": function() {
-      adjustStrengthMeter(100, "#88af0e");
-      indicateStrength("Very Strong");
+      adjustStrengthMeter(4);
     }
   }
   meterPosition[score]();
