@@ -13,6 +13,6 @@ password-meter-config.js is a config file that is included and will hold colors,
 
 For elements, I am calling them this way  
 ```
-passwordMeterConfig.elements[0]
+document.getElementById(passwordMeterConfig.elements.passwordField);
 ```  
 This will obviously match up with "password_field" from index.html.  You can adjust or set these as you wish.  

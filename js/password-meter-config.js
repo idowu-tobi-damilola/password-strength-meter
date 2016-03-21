@@ -13,9 +13,9 @@ var passwordMeterConfig = {
     "Strong",
     "Very Strong"
   ],
-  elements: [
-    "password_field",
-    "progressbar",
-    "strength-text"
-  ]
+  elements: {
+    passwordField: "password_field",
+    progressBar: "progressbar",
+    strengthText: "strength-text"
+  }
 }
