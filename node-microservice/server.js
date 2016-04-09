@@ -1,2 +1,2 @@
 var zxcvbn = require('./zxcvbn');
-console.log(zxcvbn('Tr0ub4dour&3'));
+console.log(zxcvbn('whatscookin').score);

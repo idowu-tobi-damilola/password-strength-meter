@@ -5,6 +5,10 @@ pw_field.onkeyup = function() {
   var result = zxcvbn(pw_field.value);
   var score = result.score;
   adjustStrengthMeter(score);
+
+  if(pw_field.value === "") {
+    clearMeter();
+  }
 }
 
 /* Update progressbar */
@@ -19,6 +23,12 @@ function adjustStrengthMeter(score) {
                   "visibility: visible;" +
                   "width: " + percentage + "%;" +
                   "background-color: " + passwordMeterConfig.color[score]);
+}
+
+function clearMeter(){
+    document
+      .getElementById(passwordMeterConfig.elements.progressBar)
+      .setAttribute("style","visibility: none;");
 }
 
 /* Display password strength text */
